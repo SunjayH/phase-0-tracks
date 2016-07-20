@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Practice Form</title>
+</head>
+<body>
+<h1>This is our form!</h1>
+<form action="success.html" method="post">
+	<fieldset>
+		<div>
+			<label>
+				First name:
+				<input type="text" name="firstName">
+			</label>
+		</div>
+		<div>
+			<label>
+				Last Name:
+				<input type="text" name="lastName">
+			</label>
+		</div>
+		<div>
+			<label>
+			E-mail:
+			<input type="email" name="email">
+			</label>
+		</div>
+		<div>
+			<label>
+			Phone Number:
+			<input type="tel" name="phone">
+			</label>
+		</div>
+		<div>
+			<label>T-shirt Size:</label>
+			<select name="T-shirt size">
+				<option value="x-small">X-Small</option>
+				<option value="small">Small</option>
+				<option value="medium" selected>Medium</option>
+				<option value="large">Large</option>
+				<option value="x-large">X-Large</option>
+			</select>
+		</div>
+		<div>
+			<label>Special Instructions:</label>
+			<textarea name="special-instr">Write your instructions here!</textarea>
+		</div>
+		<div>
+			<label>Color:</label>
+			<input type="radio" name="color" value="Valor">Red
+			<input type="radio" name="color" value="Mystic">Blue
+			<input type="radio" name="color" value="Instinct">Yellow
+		</div>
+	</fieldset>
+		<button type="submit">Submit</button>
+</form>
+</body>
+</html>
