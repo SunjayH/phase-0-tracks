@@ -1,5 +1,5 @@
 body {
-	width:960px;
+	max-width:960px;
 }
 
 blockquote {
@@ -14,14 +14,14 @@ cite {
 }
 
 #external-links{
-	width: 200px;
+	width: 20%;
 	display: block;
 	float: left;
 	vertical-align: center;
 }
 
 main {
-	width: 756px;
+	width: 80%;
 	display: block;
 	float: left;
 }
@@ -29,6 +29,23 @@ main {
 #external-links ul {
   list-style-type: none;
   padding-left: 0px;
+  min-width: 100px;
+}
+
+@media screen and (max-width: 500px){
+	body{
+		font-size: 80%;
+	}
+	#external-links{
+		float: none;
+	}
+	/*Gets rid of sidebar*/
+}
+
+@media screen and (max-width: 400px){
+	body{
+		font-size: 50%;
+	}
 }
 
 /* you're welcome to edit the
