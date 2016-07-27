@@ -1,3 +1,7 @@
+body {
+	width:960px;
+}
+
 blockquote {
   border-left: 5px solid blue;
   padding: 15px;
@@ -7,6 +11,19 @@ blockquote {
 cite {
   display: block;
   margin-top: 10px;
+}
+
+#external-links{
+	width: 200px;
+	display: block;
+	float: left;
+	vertical-align: center;
+}
+
+main {
+	width: 756px;
+	display: block;
+	float: left;
 }
 
 #external-links ul {
