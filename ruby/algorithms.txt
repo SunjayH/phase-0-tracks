@@ -1,0 +1,36 @@
+Using an elevator
+
+Robot asks for input - which floor?
+Robot stores input
+Robot starts at bottom left button
+While button is not the input floor
+	Go up one button
+	If there is no button to go up to, go right one row and to the bottom button
+Press button
+
+
+Choosing which Netflix movie to watch
+
+Input how much time to spend:
+	If less than thirty minutes, choose "sitcom" category
+	If greater than forty minutes and less than an hour, chose "drama TV show" category
+	If greater than an hour, choose "movie" category
+Open Netflix application
+	If "sitcom" or "drama TV show" category, hover over recently watched
+		For 1:number of recently watched shows
+		If recently watched is the desired category
+			If recently watched show has shows left, watch that show
+			else, select next recently watched
+		else, select next recently watched
+		For 1:number of suggested shows
+		If suggested show is the desired category
+			If suggested show has shows left, watch that show
+			else, select next suggested show
+		else, select next suggested show
+		Since there are no shows left, exit Netflix and go on YouTube
+	else for 1: suggested movies
+		If suggested movie has not been seen
+			Select movie
+		else select next suggested movie
+	If no suggested movie, exit Netflix and go read a book
+	Else, press play
