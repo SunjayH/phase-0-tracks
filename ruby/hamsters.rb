@@ -6,6 +6,7 @@ puts "What color is its fur?"
 color = gets.chomp
 puts "Is it a good candidate for adoption?"
 adoption = gets.chomp
+#Converts to boolean
 if adoption.include? "Yes"
 	adoption = true
 elsif adoption.include? "Sure"
@@ -15,12 +16,14 @@ else
 end
 puts "Estimated age?"
 age = gets.chomp
+#Deals with blanks and converts to integers
 if age == ""
 	age = nil
 else
 	age = age.to_i
 end
 
+#Printing
 puts "The hamster's name is #{name}."
 puts "The hamster's volume is #{volume}."
 puts "The hamster is #{color}."
