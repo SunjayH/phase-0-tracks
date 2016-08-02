@@ -32,17 +32,20 @@ end
 thisYear = Time.now.year
 lastYear = thisYear - 1
 if age == thisYear - birth_year || age == lastYear - birth_year
-	 vampireChance = "probablyNot"
+	 vampireChance = "inconclusive"
 else
 	vampireChance = "probably"
 end
 
 #Checking garlic and insurance if the birth year is off
-if vampireChance == "probably" && garlicBool == false && insuranceBool == true
+#Got year right, checking for garlic and insurance
+if vampireChance == "inconclusive"  && garlicBool == true && insuranceBool == true
+	vampireChance == "probablyNot"	
+#Age wrong and doesn't want garlic bread or insurance makes us more certain
+elsif vampireChance == "probably" && garlicBool == false && insuranceBool == false
 	vampireChance = "certainly"
-elsif vampireChance == "probably" && (garlicBool == false || insuranceBool == true)
 else
-	vampireChance == "inconclusive"
+#Results from first test stay put - either they're still probably a vampire or we can't tell
 end
 		
 #Checking names
@@ -52,3 +55,15 @@ elsif name.include? "Drake Cula"
 	vampireChance = "certainly"
 else
 end
+
+#Printing conclusion
+if vampireChance == "certainly"
+	puts "Almost certainly a vampire."
+elsif vampireChance == "probably"
+	puts "Probably a vampire"
+elsif vampireChance == "probablyNot"
+	puts "Probably not a vampire"
+elsif vampireChance == "inconclusive"
+	puts "Results inconclusive"
+else
+end 
