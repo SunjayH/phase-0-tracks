@@ -6,6 +6,13 @@ puts "What color is its fur?"
 color = gets.chomp
 puts "Is it a good candidate for adoption?"
 adoption = gets.chomp
+if adoption.include? "Yes"
+	adoption = true
+elsif adoption.include? "Sure"
+	adoption = true
+else
+	adoption = false
+end
 puts "Estimated age?"
 age = gets.chomp
 if age == ""
