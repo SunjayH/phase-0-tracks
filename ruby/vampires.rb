@@ -34,15 +34,18 @@ lastYear = thisYear - 1
 if age == thisYear - birth_year || age == lastYear - birth_year
 	 vampireChance = "inconclusive"
 else
-	vampireChance = "probably"
+	vampireChance = "likely"
 end
 
 #Checking garlic and insurance if the birth year is off
 #Got year right, checking for garlic and insurance
-if vampireChance == "inconclusive"  && garlicBool == true && insuranceBool == true
-	vampireChance == "probablyNot"	
+if vampireChance == "inconclusive"  && (garlicBool == true || insuranceBool == true)
+	vampireChance = "probablyNot"	
+#Age wrong but everything else checks out, who knows?
+elsif vampireChance == "likely" && garlicBool == true && insuranceBool == true
+	vampireChance = "inconclusive"
 #Age wrong and doesn't want garlic bread or insurance makes us more certain
-elsif vampireChance == "probably" && garlicBool == false && insuranceBool == false
+elsif vampireChance == "likely" && garlicBool == false && insuranceBool == false
 	vampireChance = "certainly"
 else
 #Results from first test stay put - either they're still probably a vampire or we can't tell
@@ -59,7 +62,7 @@ end
 #Printing conclusion
 if vampireChance == "certainly"
 	puts "Almost certainly a vampire."
-elsif vampireChance == "probably"
+elsif vampireChance == "likely"
 	puts "Probably a vampire"
 elsif vampireChance == "probablyNot"
 	puts "Probably not a vampire"
