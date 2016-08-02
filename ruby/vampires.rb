@@ -25,3 +25,30 @@ elsif insurance.include? "Sure"
 else
 	insuranceBool = false
 end
+
+#This is where we start testing
+
+#Checking the birth year
+thisYear = Time.now.year
+lastYear = thisYear - 1
+if age == thisYear - birth_year || age == lastYear - birth_year
+	 vampireChance = "probablyNot"
+else
+	vampireChance = "probably"
+end
+
+#Checking garlic and insurance if the birth year is off
+if vampireChance == "probably" && garlicBool == false && insuranceBool == true
+	vampireChance = "certainly"
+elsif vampireChance == "probably" && (garlicBool == false || insuranceBool == true)
+else
+	vampireChance == "inconclusive"
+end
+		
+#Checking names
+if name.include? "Tu Fang"
+	vampireChance = "certainly"
+elsif name.include? "Drake Cula"
+	vampireChance = "certainly"
+else
+end
