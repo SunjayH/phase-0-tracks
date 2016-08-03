@@ -35,6 +35,17 @@ while count <= employees
 		insuranceBool = false
 	end
 
+	#Check for sun allergy
+	allergyList = nil
+	while allergyList != "Done" && allergyList != "done"
+		puts "Please list your allergies. When you have listed them all, enter done."
+		allergyList = gets.chomp
+		if allergyList == "sunshine"
+			vampireTrump = true
+		else
+		end
+	end
+
 	#This is where we start testing
 
 	#Checking the birth year
@@ -69,9 +80,9 @@ while count <= employees
 	end
 
 	#Printing conclusion
-	if vampireChance == "certainly"
+	if vampireChance == "certainly" #This is first because being allergic to sunlight means they're even more certainly a vampire.
 		puts "Almost certainly a vampire."
-	elsif vampireChance == "likely"
+	elsif vampireChance == "likely" || vampireTrump == true
 		puts "Probably a vampire"
 	elsif vampireChance == "probablyNot"
 		puts "Probably not a vampire"
@@ -81,3 +92,5 @@ while count <= employees
 	end 
 	count += 1
 end
+
+puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
