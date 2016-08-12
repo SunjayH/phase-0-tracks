@@ -58,10 +58,20 @@ def alias_maker(name)
 	name = shift_values(name)
 end
 
+#Name entry is a while loop yay
+#Storage means putting into an hash where the entered name is matched to the real name
+
+alias_hash = {}
 name_entry = nil
 while name_entry != "quit"
 	puts "Enter a name you need to create and alias for:"
 	name_entry = gets.chomp
-	name_alias = alias_maker(name_entry)
-	puts name_alias
+	if name_entry != "quit"
+		name_alias = alias_maker(name_entry)
+		alias_hash[name_entry] = name_alias
+	else	
+	end
 end
+
+#Printing using each
+alias_hash.each {|real_name, fake_name| puts "#{real_name} is also known as #{fake_name}."}
