@@ -3,7 +3,6 @@
 #Convert the input type
 #Store in the hash as a pair
 #I'll deal with the last one later
-
 client_pref = {}
 
 puts "What's the client's name?"
@@ -24,26 +23,40 @@ client_pref[:decor] = decor_in
 
 puts "Does the client have pets?"
 pets_in = gets.chomp
-if pets_in.includes? "Y" || if pets_in.includes? "Sure"
-	pets_in = true
-else
-	pets_in = false
-end
+if pets_in.include? "Y"
+		pets_in = true
+	else
+		pets_in = false
+end 
 client_pref[:pets] = pets_in
 
 puts client_pref
 
+#Ask for change
+#Figure out which key is wanted
+#Figure out what the new value will be
+#Convert to the right value
+#Print new array
+
 puts "Would you like to change any of the entries?"
-if gets.chomp.includes? "Y"
+if gets.chomp.include? "Y"
 	puts "Which would you like to change?"
-	change_key = gets.chomp.to_sym
+	change_key = gets.chomp
 	puts "What is the new value?"
 	new_value = gets.chomp
 	if change_key == "age" || if change_key == "children"
 		new_value = new_value.to_i
 	elsif change_key == "pets"
-		
-			
-	client_pref[change_key] 
-else
+		if new_value.include? "Y" 
+			new_value = true
+		else
+			new_value = false
+		end
+	else
+	end
+	change_key.to_sym
+	puts client_pref(change_key)
+	client_pref[change_key] = new_value	
 end
+puts client_pref
+
