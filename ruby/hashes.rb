@@ -44,10 +44,13 @@ if gets.chomp.include? "Y"
 	change_key = gets.chomp
 	puts "What is the new value?"
 	new_value = gets.chomp
-	if change_key == "age" || if change_key == "children"
+	if change_key == "age"
+		new_value = new_value.to_i
+	elsif change_key == "children"
 		new_value = new_value.to_i
 	elsif change_key == "pets"
-		if new_value.include? "Y" 
+		yes_values = ["y", "Y", "true"]
+		if yes_values.any {|yes| new_value.include? yes}
 			new_value = true
 		else
 			new_value = false
@@ -55,7 +58,6 @@ if gets.chomp.include? "Y"
 	else
 	end
 	change_key.to_sym
-	puts client_pref(change_key)
 	client_pref[change_key] = new_value	
 end
 puts client_pref
