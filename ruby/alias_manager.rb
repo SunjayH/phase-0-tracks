@@ -58,5 +58,10 @@ def alias_maker(name)
 	name = shift_values(name)
 end
 
-new_alias = alias_maker("Zubat the Great")
-puts new_alias
+name_entry = nil
+while name_entry != "quit"
+	puts "Enter a name you need to create and alias for:"
+	name_entry = gets.chomp
+	name_alias = alias_maker(name_entry)
+	puts name_alias
+end
