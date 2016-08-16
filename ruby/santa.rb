@@ -6,7 +6,7 @@ class Santa
 		puts "Initializing Santa instance"
 		@ethnicity = ethnicity
 		@gender = gender
-		@age = 0
+		@age = rand(140)
 		@reindeer_ranking = [
 			"Rudolph", "Dasher", "Dancer", "Prancer", "Vixen",
 			"Comet", "Cupid", "Donner", "Blitzen"
@@ -33,18 +33,21 @@ end
 santas = []
 example_genders = ["male", "genderqueer", "female", "genderfluid"]
 example_ethnicities = ["black", "white", "hapa", "Hmong", "Jewish"]
-10.times do |i|
+10000.times do |i|
 	santas << Santa.new(example_genders.sample,example_ethnicities.sample)
+	puts santas[i].age
+	puts santas[i].gender
+	puts santas[i].ethnicity
 end
 
-interactive_santa = santas.sample
-puts interactive_santa.age
-puts interactive_santa.gender
-puts interactive_santa.ethnicity
-interactive_santa.celebrate_birthday
-interactive_santa.gender = "agender"
-puts interactive_santa.age
-puts interactive_santa.gender
-puts interactive_santa.reindeer
-interactive_santa.get_mad_at("Vixen")
-puts interactive_santa.reindeer
+#interactive_santa = santas.sample
+#puts interactive_santa.age
+#puts interactive_santa.gender
+#puts interactive_santa.ethnicity
+#interactive_santa.celebrate_birthday
+#interactive_santa.gender = "agender"
+#puts interactive_santa.age
+#puts interactive_santa.gender
+#puts interactive_santa.reindeer
+#interactive_santa.get_mad_at("Vixen")
+#puts interactive_santa.reindeer
