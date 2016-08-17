@@ -33,5 +33,36 @@ class Book
 		else
 			puts "#{@title} was not published after #{year}."
 		end
-		
+
 end
+
+#User interface
+
+yes_values = ["y", "Y", "true"]
+doneYet = nil
+bookshelf = []
+while doneYet =! done do |i|
+	puts "What's the title of the book you found?"
+	title = gets.chomp
+	puts "What's the author's full name?"
+	author = gets.chomp
+	puts "What year was the book published?"
+	publishingYear = gets.chomp.to_i
+	bookshelf << Book.new(title,author,publishingYear)
+	puts "Would you like to include a genre?"
+	if yes_values.any? {|yes| gets.chomp.include? yes}
+		puts "What genre is the book?"
+		bookshelf[i].genre = gets.chomp
+	else
+	end
+	puts "If you have finished inputting your books, please write done."
+	puts "Otherwise, please press enter."
+	doneYet = gets.chomp
+end
+
+bookshelf.length.times do |i|
+	thisBook = bookshelf[i]
+	puts "#{thisBook.title} is a #{thisBook.genre} book written by #{thisBook.author} and published in #{thisBook.publishingYear}."
+end
+
+
