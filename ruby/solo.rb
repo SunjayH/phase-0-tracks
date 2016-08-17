@@ -1,5 +1,5 @@
 class Book
-	attr_selector :title :author :genre :publishingYear
+	attr_accessor :title, :author, :genre, :publishingYear
 
 	def initialize(title,author,publishingYear)
 		puts "Initializing book"
@@ -33,7 +33,7 @@ class Book
 		else
 			puts "#{@title} was not published after #{year}."
 		end
-
+	end
 end
 
 #User interface
@@ -41,7 +41,8 @@ end
 yes_values = ["y", "Y", "true"]
 doneYet = nil
 bookshelf = []
-while doneYet =! done do |i|
+i = 0
+loop do
 	puts "What's the title of the book you found?"
 	title = gets.chomp
 	puts "What's the author's full name?"
@@ -50,14 +51,19 @@ while doneYet =! done do |i|
 	publishingYear = gets.chomp.to_i
 	bookshelf << Book.new(title,author,publishingYear)
 	puts "Would you like to include a genre?"
-	if yes_values.any? {|yes| gets.chomp.include? yes}
+	genre_input = gets.chomp
+	if yes_values.any? {|yes| genre_input.include? yes}
 		puts "What genre is the book?"
-		bookshelf[i].genre = gets.chomp
+		new_genre = gets.chomp
+		bookshelf[i].genre = new_genre
 	else
+		puts "Thank you"
 	end
 	puts "If you have finished inputting your books, please write done."
 	puts "Otherwise, please press enter."
 	doneYet = gets.chomp
+	break if doneYet == "done"
+	i += 1
 end
 
 bookshelf.length.times do |i|
