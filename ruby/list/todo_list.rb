@@ -12,8 +12,7 @@ class TodoList
 	end
 
 	def delete_item(item)
-		@array = @array.delete(item)
-		@array
+		@array.delete(item)
 	end
 
 	def get_item(index)
