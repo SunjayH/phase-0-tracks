@@ -71,7 +71,24 @@ end
 
 #Test
 myList = groceries("carrots apples cereal pizza")
-myList = add_item(myList,"peanut butter")
-myList = delete_item(myList,"pizza")
-myList = update_quantity(myList,"carrots", 2)
+myList = add_item(myList,"lemonade", 2)
+myList = add_item(myList,"tomatoes", 3)
+myList = add_item(myList, "onions", 1)
+myList = add_item(myList, "ice cream", 4)
+myList = delete_item(myList, "lemonade")
+myList = update_quantity(myList,"ice cream", 1)
 print_list(myList)
+
+#What did you learn about pseudocode from working on this challenge?
+	#Sometimes I have to work backward to get to pseudocode and explain things
+#What are the tradeoffs of using arrays and hashes for this challenge?
+	#Arrays wouldn't store quanitity very easily
+#What does a method return?
+	#The last line
+#What kind of things can you pass into methods as arguments?
+	#Pretty much anything
+#How can you pass information between methods?
+	#There are lots of ways. My strategy did it all manually though
+#What concepts were solidified in this challenge, and what concepts are still confusing?
+	#This helped with understanding arguments and methods
+	#I couldn't figure out how to use the .method functionality to pass information, so I eventually gave up and did it this way.
