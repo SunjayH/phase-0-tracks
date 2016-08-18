@@ -9,7 +9,7 @@
 # output: [hash goes here]
 
 def groceries(list)
-	grocery_list = hash.new
+	grocery_list = {}
 	split_list = list.split(" ")
 	split_list.length.times do |i| 
 			item = split_list[i].to_sym
@@ -25,13 +25,9 @@ end
 		# Assign quantity to the item, Use hash_name[:symbol] = quantity
 # output: Print hash with input added to it
 
-def add_item(new_item, quantity)
+def add_item(grocery_list, new_item, quantity = 1)
 	new_item = new_item.to_sym
-	if quantity == nil
-		quantity = 1
-	else
-		quantity = quantity.to_i
-	end
+	quantity = quantity.to_i
 	grocery_list[new_item] = quantity
 	grocery_list
 end
@@ -41,7 +37,7 @@ end
 # steps: delete function
 # output: hash with selected item removed
 
-def delete_item(deleted_item)
+def delete_item(grocery_list,deleted_item)
 	deleted_item = deleted_item.to_sym
 	grocery_list.delete(deleted_item)
 	grocery_list
@@ -54,7 +50,7 @@ end
 		# Use hash_name[:symbol] = quantity
 # output: The hash with modified quantity
 
-def update_quantity(item, new_quantity)
+def update_quantity(grocery_list,item, new_quantity)
 	item = item.to_sym
 	new_quantity = new_quantity.to_i
 	grocery_list[item] = new_quantity
@@ -67,3 +63,15 @@ end
 		# with it's value
 		# h.each {|key, value| puts "I need #{value} of #{key}."
 # output: Full list of each item and quantity
+
+def print_list(list)
+	list.each {|key, value| puts "I need #{value} #{key}."}
+	list
+end
+
+#Test
+myList = groceries("carrots apples cereal pizza")
+myList = add_item(myList,"peanut butter")
+myList = delete_item(myList,"pizza")
+myList = update_quantity(myList,"carrots", 2)
+print_list(myList)
