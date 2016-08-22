@@ -11,4 +11,7 @@ function reverse(str){
 	return reverseStr;
 }
 
-console.log(reverse("Your face"));
+var reversedProblem = reverse("Problem");
+if (reversedProblem[0] == 'm'){
+	console.log(reversedProblem);
+}
