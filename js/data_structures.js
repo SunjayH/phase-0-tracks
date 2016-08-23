@@ -12,14 +12,18 @@ for (var i = horses.length - 1; i >= 0; i--) {
 
 //console.log(colorHorses);
 
-function Car(brand,model,color){
+function Car(brand,modelYear,color){
 	this.brand = brand;
-	this.model = model;
+	this.modelYear = modelYear;
 	this.color = color;
 
 	this.start = function() {console.log("The engine is running!");};	
 }
 
-var newCar = new Car("Toyota", "Prius", "Cobalt");
+var newCar = new Car("Toyota", 2011, "Cobalt");
 newCar.start();
-console.log(newCar);
+
+var oldCar = new Car("Ford", 1989, "Red");
+oldCar.start();
+
+var electricCar = new Car("Tesla", 2015, "Gray");
