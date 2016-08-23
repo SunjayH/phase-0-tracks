@@ -41,3 +41,27 @@ function matchObjects(obj1,obj2){
 
 console.log(matchObjects({name: "Steven", age: 52},{name: "Tamir", age: 54}));
 console.log(matchObjects({name: "Steven", age: 54},{name: "Tamir", age: 54}));
+
+// Input a number
+// Start with an empty array
+// Generate a length for the string to be generated
+// Generate the string (maybe just "B" followed by a random number of "O"s)
+// (I just saw ghostbusters a couple weeks back)
+//Push string into array
+// Return array
+
+function randStrArray(num){
+	var stringArray = [];
+	for (var i = 0; i < num; i++) {
+		var oLength = Math.random();
+		oLength = oLength*10;
+		oLength = Math.floor(oLength);
+		//when testing
+		console.log(oLength);
+		var string = "B" + "o".repeat(oLength);
+		stringArray.push(string);
+	}
+	return stringArray;
+}
+
+//console.log(randStrArray(3));
