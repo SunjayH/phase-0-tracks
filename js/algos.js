@@ -56,8 +56,6 @@ function randStrArray(num){
 		var oLength = Math.random();
 		oLength = oLength*10;
 		oLength = Math.floor(oLength);
-		//when testing
-		console.log(oLength);
 		var string = "B" + "o".repeat(oLength);
 		stringArray.push(string);
 	}
@@ -65,3 +63,9 @@ function randStrArray(num){
 }
 
 //console.log(randStrArray(3));
+
+for (var i = 0; i < 10; i++) {
+	var randString = randStrArray(5);
+	console.log(randString);
+	console.log(longestWord(randString));
+}
