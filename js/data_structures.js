@@ -27,3 +27,5 @@ var oldCar = new Car("Ford", 1989, "Red");
 oldCar.start();
 
 var electricCar = new Car("Tesla", 2015, "Gray");
+
+for (key in electricCar) {console.log("This car's " + key + " is:" + electricCar[key]);}
