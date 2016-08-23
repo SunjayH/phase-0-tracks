@@ -4,10 +4,10 @@ var horses = ["Ed", "Phil", "Yasmina", "Rachel"];
 colors.push("Orange");
 horses.push("Emmett");
 
-var coloredHorses = {};
+var colorHorses = {};
 
 for (var i = horses.length - 1; i >= 0; i--) {
-	coloredHorses[horses[i]] = colors[i];
+	colorHorses[horses[i]] = colors[i];
 }
 
-console.log(coloredHorses);
+console.log(colorHorses);
