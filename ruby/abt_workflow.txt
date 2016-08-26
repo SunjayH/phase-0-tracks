@@ -1,0 +1,2 @@
+I definitely did some flailing on the 4.4 assignment. I eventually fixed the bugs, but it would have been better to have isolated one theory at a time and reverted back to earlier commits. I did have plenty of commits when I was doing the assignment, but I didn't use them strategically.
+I also just learned how to revert to earlier commits on files! That's so exciting! I knew there was a way but I hadn't needed to do it, so I hadn't looked it up. 
