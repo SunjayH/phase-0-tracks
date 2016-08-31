@@ -1,0 +1,49 @@
+SELECT * FROM pokedex;
+
+1|Pidgey|Flying, Normal|18
+2|Pidgeotto|Flying, Normal|36
+3|Pidgeot|Flying, Normal|
+4|Rattata|Normal|20
+5|Raticate|Normal|
+
+
+UPDATE my_pokemon SET pkmn_id = 3 WHERE nickname = "The Pokemon Formerly Known as Pidgey";
+
+
+SELECT * FROM my_pokemon, pokedex WHERE my_pokemon.pkmn_id = pokedex.id; 
+1|The Great Pidge|17|1|1|Pidgey|Flying, Normal|18
+2|Pidgey2|7|1|1|Pidgey|Flying, Normal|18
+3|The Pokemon Formerly Known as Pidgey|25|3|3|Pidgeot|Flying, Normal|
+4|King Pidge|40|3|3|Pidgeot|Flying, Normal|
+5|Aw Rats|13|4|4|Rattata|Normal|20
+6|No Bubonic|6|4|4|Rattata|Normal|20
+7|Not Yet Raticate|19|4|4|Rattata|Normal|20
+
+ SELECT my_pokemon.nickname, pokedex.pkmn_name FROM my_pokemon JOIN pokedex ON my_pokemon.pkmn_id = pokedex.id;
+The Great Pidge|Pidgey
+Pidgey2|Pidgey
+The Pokemon Formerly Known as Pidgey|Pidgeot
+King Pidge|Pidgeot
+Aw Rats|Rattata
+No Bubonic|Rattata
+Not Yet Raticate|Rattata
+
+DELETE FROM my_pokemon WHERE nickname = "No Bubonic";
+
+SELECT my_pokemon.nickname, pokedex.pkmn_name FROM my_pokemon LEFT OUTER JOIN pokedex ON my_pokemon.pkmn_id = pokedex.id;
+The Great Pidge|Pidgey
+Pidgey2|Pidgey
+The Pokemon Formerly Known as Pidgey|Pidgeot
+King Pidge|Pidgeot
+Aw Rats|Rattata
+Not Yet Raticate|Rattata
+
+SELECT pokedex.pkmn_name, my_pokemon.nickname FROM my_pokemon JOIN pokedex ON my_pokemon.pkmn_id = pokedex.id;
+Pidgey|The Great Pidge
+Pidgey|Pidgey2
+Pidgeot|The Pokemon Formerly Known as Pidgey
+Pidgeot|King Pidge
+Rattata|Aw Rats
+Rattata|Not Yet Raticate
+
+// Cross joins are not relevant here
