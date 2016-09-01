@@ -1,0 +1,26 @@
+
+
+sqlite> SELECT * FROM users, businesses, reviews WHERE businesses.id = reviews.business_id AND users.id = reviews.user_id;
+4|Steven|Wonder|3|Sushi World|1|3|Delicious sushi!|3|4
+1|Bradford|Pitt|1|Lotus Yoga
+|2|4|Did the Vinyasa class. Got my blood pumping!|1|1
+2|Mandy|Kaling|2|Plumbing by Janet|3|5||2|2
+2|Mandy|Kaling|4|JoeBob's Sportz Barn|4|1|Only played football and basketball, where's the India/Pakistan cricket match?|4|2
+sqlite>
+
+
+sqlite> SELECT users.first_name, users.last_name, businesses.name, reviews.stars, reviews.comment FROM users JOIN reviews ON users.id = reviews.user_id JOIN businesses ON businesses.id = reviews.business_id;
+Steven|Wonder|Sushi World|3|Delicious sushi!
+Bradford|Pitt|Lotus Yoga
+|4|Did the Vinyasa class. Got my blood pumping!
+Mandy|Kaling|Plumbing by Janet|5|
+Mandy|Kaling|JoeBob's Sportz Barn|1|Only played football and basketball, where's the India/Pakistan cricket match?
+sqlite>
+
+
+sqlite> SELECT * FROM users JOIN reviews ON users.id = reviews.user_id JOIN businesses ON business.id = reviews.business.id WHERE businesses.id = 1;
+Error: no such column: business.id
+sqlite> SELECT * FROM users JOIN reviews ON users.id = reviews.user_id JOIN businesses ON businesses.id = reviews.business_id WHERE businesses.id = 1;
+1|Bradford|Pitt|2|4|Did the Vinyasa class. Got my blood pumping!|1|1|1|Lotus Yoga
+
+sqlite>
