@@ -83,7 +83,7 @@ def new_item()
 	#end
 end
 
-new_item
+
 # Shop will ask if add item
 # If yes, shop will display list of known items and ask if it's on the list
 	# If yes, shop will ask which item it is
@@ -92,39 +92,47 @@ new_item
 #If no, loop breaks
 #New items will be put into a database by going through NewItemHash with each
 
-# def shop
-# 	yes_values = ["Yes", "yes", "Y", "y"]
-# 	newItemHash = {}
-# 	while i = i do
-# 		puts "Did you buy another item?"
-# 		if yes_values.any? {|yes| gets.chomp.include? yes}
-# 			puts "Is the item you bought on this list?"
-# 			puts $fridge.execute("SELECT (food_name) FROM food_type")
-# 			if yes_values.any? {|yes| gets.chomp.include? yes}
-# 				puts "What number is it on the list?"
-# 				food_id = gets.chomp.to_i
-# 			else
-# 				food_id = new_item()
-# 			end
-# 			food_measure = $fridge.execute("Select (standard_measure) FROM food_type WHERE id = #{food_id}")
-# 			puts "How many #{food_measure} did you purchase?"
-# 			food_quantity = gets.chomp.to_i
-# 		else
-# 			break
-# 		end
-# 		newItemHash[food_id] = food_quantity
-# 	end
+def shop
+	yes_values = ["Yes", "yes", "Y", "y"]
+	newItemHash = {}
+	i = 0
+	until i != i do
+		puts "Did you buy another item?"
+		ans = gets.chomp
+		if yes_values.any? {|yes| ans.include? yes}
+			puts "Is the item you bought on this list?"
+			puts $fridge.execute("SELECT (food_name) FROM food_type")
+			ans = gets.chomp
+			if yes_values.any? {|yes| ans.include? yes}
+				puts "What number is it on the list?"
+				food_id = gets.chomp.to_i
+			else
+				food_id = new_item()
+			end
+			food_measure = $fridge.execute("Select (standard_measure) FROM food_type WHERE id = #{food_id}")
+			puts "How many #{food_measure} did you purchase?"
+			food_quantity = gets.chomp.to_i
+		else
+			break
+		end
+		newItemHash[food_id] = food_quantity
+	end
 
-# 	#Put bought items into the database
-# 	#Figures out if the item is already in the fridge
-# 	#If it is, increase the quantity
-# 	#If it's not, make a new line
-# 	newItemHash.each do |id,quantity|
-# 		if $fridge.execute("SELECT * FROM fridge WHERE food_type=#{id}").empty?
-# 			$fridge.execute("INSERT INTO fridge (food_type, quantity) VALUES (#{id}, #{quantity})")
-# 		else
-# 			quantity += $fridge.execute("SELECT (quantity) FROM fridge WHERE food_type=#{id}")
-# 			$fridge.execute("UPDATE fridge SET quantity=#{quantity} WHERE food_type=#{id}")
-# 		end
-# 	end	
-# end
+	#Put bought items into the database
+	#Figures out if the item is already in the fridge
+	#If it is, increase the quantity
+	#If it's not, make a new line
+	newItemHash.each do |id,quantity|
+		if $fridge.execute("SELECT * FROM fridge WHERE food_type=#{id}").empty?
+			$fridge.execute("INSERT INTO fridge (food_type, quantity) VALUES (#{id}, #{quantity})")
+		else
+			quantity += $fridge.execute("SELECT (quantity) FROM fridge WHERE food_type=#{id}")
+			$fridge.execute("UPDATE fridge SET quantity=#{quantity} WHERE food_type=#{id}")
+		end
+	end	
+
+	#Returns id
+	food_id
+end
+
+shop()
