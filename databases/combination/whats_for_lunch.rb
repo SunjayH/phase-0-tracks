@@ -33,20 +33,18 @@ create_food_list = <<-SQL
 
 staples = <<-SQL
 	INSERT INTO food_type (food_name, standard_measure, is_vegetable, est_cal)
-	SELECT ("egg", "large egg(s)", "false", 78),
+	VALUES ("egg", "large egg(s)", "false", 78),
 	("multigrain bread", "slice(s)", "false", 109),
-	("soy milk", "cup(s)", "false", 131) WHERE NOT EXISTS (SELECT * FROM food_type);
+	("soy milk", "cup(s)", "false", 131);
 SQL
 
 $fridge.execute(create_fridge)
 $fridge.execute(create_food_list)
-if $fridge.execute
+if $fridge.execute("SELECT * FROM food_type").empty?
 	$fridge.execute(staples)
+	p $fridge.execute("SELECT * FROM food_type")
 end
 
-p $fridge.execute("SELECT * FROM fridge") do |row|
-    p row
-    end
 
 #Will have four different methods:
 #Shop will allow items to be put in fridge database
