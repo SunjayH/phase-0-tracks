@@ -101,7 +101,17 @@ def shop
 		ans = gets.chomp
 		if yes_values.any? {|yes| ans.include? yes}
 			puts "Is the item you bought on this list?"
-			puts $fridge.execute("SELECT (food_name) FROM food_type")
+			
+			# Prints out what food types are in the db
+			food_type_array = $fridge.execute("SELECT * FROM food_type")
+			food_type_array.each_index do |i|
+				food_type_hash = food_type_array[i]
+				id = food_type_hash["id"]
+				food_name = food_type_hash["food_name"]
+				puts "#{id} #{food_name}"
+			end
+
+			#Gets id of the bought item
 			ans = gets.chomp
 			if yes_values.any? {|yes| ans.include? yes}
 				puts "What number is it on the list?"
@@ -109,7 +119,10 @@ def shop
 			else
 				food_id = new_item()
 			end
+
+			#Gets quantity of bought item
 			food_measure = $fridge.execute("Select (standard_measure) FROM food_type WHERE id = #{food_id}")
+			food_measure = food_measure["standard_measure"]
 			puts "How many #{food_measure} did you purchase?"
 			food_quantity = gets.chomp.to_i
 		else
