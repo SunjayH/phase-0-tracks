@@ -46,8 +46,8 @@ end
 #Will have four different methods:
 #New item will allow new types of food to be put in food type database
 #Shop will allow items to be put in fridge database
-#Suggest meal will give list of things in fridge and tell whether to go shopping
-#Eat will take items out of fridge database 
+#Suggest meal will give list of things in fridge
+	#DID NOT DO:	#Eat will take items out of fridge database 
 
 #Reminder: New item will allow new types of food to be put in food type database
 #new_item will ask for each of the pieces of information about the item
