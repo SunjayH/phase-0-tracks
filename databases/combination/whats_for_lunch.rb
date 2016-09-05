@@ -46,9 +46,10 @@ end
 #Will have four different methods:
 #New item will allow new types of food to be put in food type database
 #Shop will allow items to be put in fridge database
-#Suggest meal will give list of things in fridge and tell whether to go shopping
-#Eat will take items out of fridge database 
+#Suggest meal will give list of things in fridge
+	#DID NOT DO:	#Eat will take items out of fridge database 
 
+#Reminder: New item will allow new types of food to be put in food type database
 #new_item will ask for each of the pieces of information about the item
 #new_item will push that information into the food_type table
 #new_item will return the id of the added item
@@ -83,7 +84,7 @@ def new_item()
 	#end
 end
 
-
+#Reminder: Shop will allow items to be put in fridge database
 # Shop will ask if add item
 # If yes, shop will display list of known items and ask if it's on the list
 	# If yes, shop will ask which item it is
@@ -101,7 +102,17 @@ def shop
 		ans = gets.chomp
 		if yes_values.any? {|yes| ans.include? yes}
 			puts "Is the item you bought on this list?"
-			puts $fridge.execute("SELECT (food_name) FROM food_type")
+			
+			# Prints out what food types are in the db
+			food_type_array = $fridge.execute("SELECT * FROM food_type")
+			food_type_array.each_index do |i|
+				food_type_hash = food_type_array[i]
+				id = food_type_hash["id"]
+				food_name = food_type_hash["food_name"]
+				puts "#{id} #{food_name}"
+			end
+
+			#Gets id of the bought item
 			ans = gets.chomp
 			if yes_values.any? {|yes| ans.include? yes}
 				puts "What number is it on the list?"
@@ -109,7 +120,11 @@ def shop
 			else
 				food_id = new_item()
 			end
+
+			#Gets quantity of bought item
 			food_measure = $fridge.execute("Select (standard_measure) FROM food_type WHERE id = #{food_id}")
+			food_measure = food_measure[0]
+			food_measure = food_measure["standard_measure"]
 			puts "How many #{food_measure} did you purchase?"
 			food_quantity = gets.chomp.to_i
 		else
@@ -135,4 +150,39 @@ def shop
 	food_id
 end
 
-shop()
+#Reminder: Suggest meal will give list of things in fridge and tell whether to go shopping
+# suggest_meal will print out a list of food in the fridge with calorie count, vegetable presence, and quantity
+# STRETCH: suggest_meal will calculate calories in all food
+# suggest_meal will tell you to shop if 
+	# a) there are not at least 1000 calories
+	# b) there are no vegetables
+
+def suggest_meal
+	#Prints fridge content
+	fridge_content = $fridge.execute("SELECT food_type.food_name, fridge.quantity, food_type.standard_measure, food_type.is_vegetable, food_type.est_cal FROM fridge JOIN food_type ON fridge.food_type = food_type.id")
+	p fridge_content
+	fridge_content.each_index do |i|
+		fridge_hash = fridge_content[i]
+		food_name = fridge_hash["food_name"]
+		quantity = fridge_hash["quantity"]
+		standard_measure = fridge_hash["standard_measure"]
+		is_vegetable = fridge_hash["is_vegetable"]
+		#To make is_vegetable actual boolean
+		if is_vegetable == "true"
+			is_vegetable = true
+			vegetable_str = ""
+		else
+			is_vegetable = false
+			vegetable_str = " not"
+		end
+		est_cal = fridge_hash["est_cal"]
+		puts "You have #{quantity} #{standard_measure} of #{food_name}."
+		#Get rid of (s)
+		if standard_measure.include?("(s)")
+			standard_measure = standard_measure.slice(0,standard_measure.length - 3)	
+		end
+		puts "#{food_name} is #{vegetable_str} a vegetable, and has #{est_cal} calories per #{standard_measure}."
+	end
+end
+
+suggest_meal
