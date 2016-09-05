@@ -122,6 +122,7 @@ def shop
 
 			#Gets quantity of bought item
 			food_measure = $fridge.execute("Select (standard_measure) FROM food_type WHERE id = #{food_id}")
+			food_measure = food_measure[0]
 			food_measure = food_measure["standard_measure"]
 			puts "How many #{food_measure} did you purchase?"
 			food_quantity = gets.chomp.to_i
@@ -149,3 +150,5 @@ def shop
 end
 
 shop()
+
+p $fridge.execute("SELECT * FROM fridge, food_type")
