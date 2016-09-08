@@ -29,3 +29,8 @@ end
 get '/students/drop' do
 	erb :drop_student
 end
+
+post '/students/drop' do
+	db.execute("DELETE FROM students WHERE name=?", params['name'])
+	redirect '/'
+end
