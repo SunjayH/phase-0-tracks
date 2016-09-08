@@ -25,3 +25,7 @@ post '/students' do
 end
 
 # add static resources
+
+get '/students/drop' do
+	erb :drop_student
+end
