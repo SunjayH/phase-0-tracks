@@ -1,0 +1,30 @@
+<!DOCTYPE html/javascript>
+<html>
+<head>
+	<title>Test App</title>
+	<link rel="stylesheet" type="text/css" href="vegan-style.css">
+	<script src="jquery-1.12.4.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("button").click(
+			function(){
+				$('blockquote').css({'border-color':'blue'});
+			});
+		});		
+
+	</script>
+</head>
+<body>
+	<main><h1>So you want to be a vegan?</h1>
+	<blockquote>There is injustice; you can challenge it. There is a way to live a life of integrity, of trying to do the least harm possible, of integrating political beliefs with what you eat and how you treat others. Welcome to a feminist-vegan vision for the world.<br>
+	--<a href="http://caroljadams.com/why-vegan-feminist/">Carol J. Adams</a>
+	<button id="button">Change the color of the quote</button>
+	</blockquote>
+	<p class="disclaimer">You may have heard that one of the best ways to reduce your carbon footprint is to stop eating meat, dairy, and eggs, and live entirely without animal products. This is true, as demonstrated by the following graphic:</p>
+	<figure><img src="green_house_proteins.jpg" alt="Graphic showing carbon footprints of various foods"><br>
+	<label>Image courtesy of the <a href="http://www.ewg.org/meateatersguide/a-meat-eaters-guide-to-climate-change-health-what-you-eat-matters/climate-and-environmental-impacts/">Environmental Working Group</a></label></figure>
+	<p>This website aims to help you decide whether or not you want to go vegan.</p>
+	</main>
+
+</body>
+</html>
